@@ -1,0 +1,106 @@
+python -m pip install -U pip --user 
+pip install virtualenv
+virtualenv env       
+.\env\Scripts\activate.ps1 
+
+pip install gunicorn
+python manage.py runserver
+
+pip install gunicorn
+
+pip freeze > requirements.txt
+
+
+pip install gunicorn
+
+pip freeze > requirements.txt
+
+heroku login
+
+Procfile:
+
+	web: gunicorn app:app
+
+
+git init
+
+git add .   
+
+git commit -m "Initialize commit"
+
+heroku create profile-list-9998
+
+git remote -v
+
+https://profile-list-9998.herokuapp.com/ | https://git.heroku.com/profile-list-9998.git
+
+
+git remote add heroku2 https://git.heroku.com/profile-list-9998.git
+git push heroku2 master
+
+git remote add origin https://github.com/runitrupam/django-beginner-blog.git
+#git branch -M main
+git push -u origin main
+
+
+
+django-admin startproject userproject
+cd userproject  
+python manage.py startapp home
+from django.urls.conf import include
+
+url dispatcher , 
+    link goes to my project(hello .urls) --> redirected to the app (homeapp) .urls.
+    from homeapp.urls redirected to homeapp.view 
+    From view (we have different functions to catch the urls ) . and from here we render the html pages.
+
+using bootstrap for lazy people , who do't have time for designing the pages .
+
+
+
+python manage.py 
+    shows all commands of django
+
+python manage.py makemigrations
+    for if there is change in the schema 
+
+python manage.py migrate
+    to create tables reuired for authenticate(admin)
+
+python manage.py createsuperuser    
+
+
+add you model 
+    register your model (Contact) in admin.
+
+    in settings of project(hello) -> add the app in that . 
+    INSTALLED_APPS = [
+        'homeapp.apps.HomeappConfig',
+----->>>>python manage.py makemigrations        
+
+Contact.objects.all()[0].name # to get the name of 1st object
+
+c = Contact.objects.filter(name="runit")
+c.name = 'ranjan'
+c.save()
+
+
+### authenticate or make log in page .
+# use {% csrf_token %} in login form 
+from django.contrib.auth import authenticate , login , logout 
+
+<form method="POST" action="/login">
+   
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        user = authenticate(name=name)
+        if user is not none:
+            login(request,user)
+
+ #logout
+ logout(request)
+ 
+ 
+ if request.user.is_anonymous:
+        #return render(request,'login.html')   #
+        return redirect("/loginUser")
