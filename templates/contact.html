@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}
+This is ice cream contact page
+{% endblock title %}
+
+{% block body %}
+<div class="container-fluid px-0 mb-3">
+
+    <img src="https://picsum.photos/id/0/900/600" class="d-block w-100 text-center" alt="">
+
+</div>
+
+<div class="container mb-3">
+    <h3 class="text-center">Contact Us</h3>
+    <form action="/contact" method="POST">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" >
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" name = "email" placeholder="name@example.com">
+        </div>
+        <div class="mb-3">
+            <label for="phone" class=" form-label">Phone</label>
+            <input type="phone" class="form-control" name="phone" id="phone">
+        </div>
+        <div class="mb-3">
+            <label for="desc" class="form-label">Tell me what you want to know </label>
+            <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+</div>
+
+
+{% endblock body %}
